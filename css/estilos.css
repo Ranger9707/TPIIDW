@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #222;
+    background-color: #0c4d6b;
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -70,7 +70,7 @@ img {
 }
 
 footer {
-    background-color: #222;
+    background-color: #0c4d6b;
     color: #fff;
     text-align: center;
     padding: 15px;
@@ -94,3 +94,16 @@ body {
 main {
     flex: 1; 
 }
+
+.catalogo {
+    list-style: none;        /* Saca los números */
+    padding: 0;
+    margin: 0 auto;          /* Centra horizontalmente */
+    text-align: center;      /* Centra el texto dentro de los <li> */
+    max-width: 800px;        /* Opcional: limita el ancho para que se vea más prolijo */
+}
+
+.catalogo li {
+    margin-bottom: 40px;     /* Espacio entre salones */
+}
+
