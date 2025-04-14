@@ -96,14 +96,14 @@ main {
 }
 
 .catalogo {
-    list-style: none;        /* Saca los números */
+    list-style: none;        
     padding: 0;
-    margin: 0 auto;          /* Centra horizontalmente */
-    text-align: center;      /* Centra el texto dentro de los <li> */
-    max-width: 800px;        /* Opcional: limita el ancho para que se vea más prolijo */
+    margin: 0 auto;          
+    text-align: center;      
+    max-width: 800px;        
 }
 
 .catalogo li {
-    margin-bottom: 40px;     /* Espacio entre salones */
+    margin-bottom: 40px;     
 }
 
