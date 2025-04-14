@@ -11,7 +11,7 @@ Trabajo Practico Integrador IDW
 
 
 
-OBJETIVOS
+OBJETIVOS DE LA PRIMERA ENTREGA.
 +  Son objetivos de esta primer entrega que el estudiante:
 - Ponga en práctica todos los conocimientos adquiridos sobre HTML y CSS.
 - Defina la estructura de la aplicación web que servirá como base para la realización del Trabajo Final
