@@ -93,6 +93,8 @@ body {
 
 main {
     flex: 1; 
+    padding-top: 60px; /* Ajusta según el tamaño de tu barra de navegación */
+    
 }
 
 .catalogo {
@@ -111,7 +113,10 @@ main {
 nav {
     background-color: #0c4d6b;
     padding: 10px 0;
-}
+    position: sticky; /* Se pega al hacer scroll */
+    top: 0; /* Pegado al top de la ventana */
+    width: 100%; /* Ocupa todo el ancho */
+    z-index: 1000; /* Asegura que la barra esté por encima de otros elementos */}
 
 nav ul.navbar {
     list-style: none;
