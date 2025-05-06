@@ -107,3 +107,30 @@ main {
     margin-bottom: 40px;     
 }
 
+/* Barra de navegación */
+nav {
+    background-color: #0c4d6b;
+    padding: 10px 0;
+}
+
+nav ul.navbar {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.navbar li a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: background-color 0.3s;
+}
+
+nav ul.navbar li a:hover {
+    background-color: #08507779;
+    border-radius: 4px;
+}
