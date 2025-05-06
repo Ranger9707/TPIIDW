@@ -127,10 +127,11 @@ nav ul.navbar li a {
     text-decoration: none;
     font-weight: bold;
     padding: 8px 12px;
-    transition: background-color 0.3s;
+    border-radius: 4px; /* Esto aplica siempre, no solo en hover */
+    transition: all 0.3s ease; /* Transición suave de todos los cambios */
 }
 
 nav ul.navbar li a:hover {
-    background-color: #08507779;
+    background-color: #0850779a;
     border-radius: 4px;
 }
