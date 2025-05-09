@@ -3,54 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilos.css">
     <title>Información de Contacto - IDW S.A</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>  
-    <header>
-        <h1>IDW S.A - Información de Contacto</h1>
-        <nav>
-            <ul class="navbar">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="institucional.html">Información Institucional</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="d-flex flex-column min-vh-100">
 
-    <main>
-        <section>
-            <article>
-                <h2><i class="fas fa-address-book"></i> Información de Contacto</h2>
-                <p>¿Querés ponerte en contacto con nosotros? Acá tenés nuestras vías de comunicación:</p>
-            </article>
+    <!-- Header con barra de navegación Bootstrap 5 -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">IDW S.A</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="salones.html">Salones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="institucional.html">Información Institucional</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+    <main class="container my-5 flex-grow-1">
+        <section class="mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title"><i class="fas fa-address-book me-2"></i>Información de Contacto</h2>
+                    <p class="card-text">¿Querés ponerte en contacto con nosotros? Acá tenés nuestras vías de comunicación:</p>
+                </div>
+            </div>
         </section>
 
         <section>
-            <article>
-                <ul>
-                    <li><i class="fas fa-phone"></i> <strong>Teléfono:</strong> 1234-56789</li>
-                    <li><i class="fas fa-envelope"></i> <strong>Correo Electrónico:</strong> <a href="mailto:contacto@com.ar">contacto@com.ar</a></li>
-                    <li><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> La Valle 123, Buenos Aires</li>
-                    <li>
-                        <div class="mapa">
-                            <iframe src="https://www.google.com/maps/embed?pb=..." 
-                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
-                            </iframe>
+            <ul class="list-group">
+                <li class="list-group-item"><i class="fas fa-phone me-2"></i><strong>Teléfono:</strong> 1234-56789</li>
+                <li class="list-group-item"><i class="fas fa-envelope me-2"></i><strong>Correo:</strong> <a href="mailto:contacto@com.ar">contacto@com.ar</a></li>
+                <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i><strong>Dirección:</strong> La Valle 123, Buenos Aires</li>
+                <li class="list-group-item">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </li>
+                <li class="list-group-item"><i class="fas fa-clock me-2"></i><strong>Horario:</strong> Lunes a Viernes de 9 a 18 hs</li>
+                <li class="list-group-item"><i class="fab fa-whatsapp me-2"></i><strong>WhatsApp:</strong> <a href="https://wa.me/5491123456789" target="_blank">+54 9 11 2345-6789</a></li>
+                <li class="list-group-item"><i class="fab fa-facebook-f me-2"></i><strong>Facebook:</strong> <a href="https://facebook.com/IDW" target="_blank">/idw</a></li>
+                <li class="list-group-item"><i class="fab fa-instagram me-2"></i><strong>Instagram:</strong> <a href="https://instagram.com/IDW" target="_blank">@idw</a></li>
+            </ul>
+        </section>
+
+        <section class="mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title"><i class="fas fa-paper-plane me-2"></i>Formulario de Contacto</h2>
+                    <form action="mailto:contacto@com.ar" method="POST" enctype="text/plain">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
                         </div>
-                    </li>
-                    <li><i class="fas fa-clock"></i> <strong>Horario de atención:</strong> Lunes a Viernes de 9 a 18 hs</li>
-                    <li><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/5491123456789" target="_blank">+54 9 11 2345-6789</a></li>
-                    <li><i class="fab fa-facebook-f"></i> <strong>Facebook:</strong> <a href="https://facebook.com/IDW" target="_blank">/idw</a></li>
-                    <li><i class="fab fa-instagram"></i> <strong>Instagram:</strong> <a href="https://instagram.com/IDW" target="_blank">@idw</a></li>
-                </ul>
-            </article>
+        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono">
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                        </div>
+        
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-1"></i>Enviar</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 IDW. Todos los derechos reservados.</p>
+    <footer class="bg-primary text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 IDW. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+
