@@ -93,6 +93,8 @@ body {
 
 main {
     flex: 1; 
+    padding-top: 60px; /* Ajusta según el tamaño de tu barra de navegación */
+    
 }
 
 .catalogo {
@@ -107,4 +109,34 @@ main {
     margin-bottom: 40px;     
 }
 
+nav {
+    background-color: #0c4d6b;
+    padding: 10px 0;
+    position: sticky;
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; 
+}
 
+nav ul.navbar {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.navbar li a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px; 
+    transition: all 0.3s ease; 
+}
+
+nav ul.navbar li a:hover {
+    background-color: #0850779a;
+    border-radius: 4px;
+}
