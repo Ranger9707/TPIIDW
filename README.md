@@ -10,7 +10,6 @@ Trabajo Practico Integrador IDW
 - Debuck, Jose Ignacio
 
 
-
 OBJETIVOS DE LA PRIMERA ENTREGA.
 +  Son objetivos de esta primer entrega que el estudiante:
 - Ponga en práctica todos los conocimientos adquiridos sobre HTML y CSS.
@@ -28,7 +27,6 @@ OBJETIVOS DE LA SEGUNDA ENTREGA.
  - Deben reemplazarse estilos propios definidos en el archivo CSS por clases provistas por Bootstrap.
  - Exhibir un catálogo de salones de eventos utilizando el sistema de grillas de Bootstrap.
  - Incorporación de una barra de navegación funcional, coherente con la estructura del sitio, que permita el acceso a todas las páginas del sitio web.
-
 
 CONDICIONES DE ENTREGA
 +  La entrega del primer avance deberá:

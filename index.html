@@ -3,52 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDW S.A - Reserva de salones de eventos.</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <title>IDW S.A - Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+
     <header>
-        <h1>IDW S.A - Reserva de salones de eventos.</h1>
-        <ul>
-            <li><a href="institucional.html">Informacion Institucional </a></li>
-            <li><a href="contacto.html">Informacion Contacto </a></li>
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">IDW S.A</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="salones.html">Salones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="institucional.html">Información Institucional</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
-    <main>
-        <section>
-            <h3>Bienvenidos a nuesto catalogo</h3>
-            <p>Esta es una prueba de la primera pagina de IDW</p>
-        </section>
 
-        <section>
-            <ol class="catalogo">
-                <li>
-                    <strong>Salon N°1</strong> La Valle 123
-                    <br>
-                    <img src=Recursos/salon1.jpg alt="Salon 1" width="600" height="400">
-                    <br>
-                    <p>Descripcion salon 1</p>
+    <main class="container text-center my-5 flex-grow-1">
 
-                </li>
-                <li>
-                    <strong>Salon N°2</strong> La Valle 456
-                    <br>
-                    <img src=Recursos/salon2.jpg alt="Salon 2" width="600" height="400">
-                    <br>
-                    <p>Descripcion salon 2</p>
-                </li>
 
-                <li>
-                    <strong>Salon N°3</strong> La Valle 789
-                    <br>
-                    <img src=Recursos/salon3.jpg alt="Salon 3" width="600" height="400">
-                    <br>
-                    <p>Descripcion salon 3</p>
-            </ol>
-        </section>
+        <h1 class="mb-4">Bienvenidos a IDW S.A</h1>
+        <p class="lead mb-4">En IDS S.A., nos especializamos en la administración y coordinación de salones para todo tipo de celebraciones, desde cumpleaños y fiestas sociales hasta eventos corporativos de alto nivel. Nuestro objetivo es ofrecer soluciones personalizadas que aseguren el éxito de cada evento, adaptándonos a las necesidades específicas de nuestros clientes.
+        Contamos con una amplia red de salones equipados con tecnología de punta, servicios de catering de calidad, ambientación temática y personal capacitado para garantizar una experiencia única y memorable. Ya sea que estés planificando una reunión íntima o una gran convención, en IDS S.A. te acompañamos en cada paso del proceso, asegurando que cada detalle esté perfectamente organizado.
+        Confía en nosotros para transformar tus ideas en eventos inolvidables.</p>
+        <a href="salones.html" class="btn btn-lg btn-primary">
+            <i class="fas fa-door-open me-2"></i> Ver Salones y Reservar
+        </a>
+<br></br>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="Recursos/BANNER_1.jpg" class="d-block w-100" alt="IMAGEN BANNER 1">
+    </div>
+    <div class="carousel-item">
+      <img src="Recursos/BANNER_2.jpg" class="d-block w-100" alt="IMAGEN BANNER 2">
+    </div>
+    <div class="carousel-item">
+      <img src="Recursos/BANNER_3.jpg" class="d-block w-100" alt="IMAGEN BANNER 3">
+    </div>
+    <div class="carousel-item">
+      <img src="Recursos/BANNER_4.jpg" class="d-block w-100" alt="IMAGEN BANNER 4">
+    </div>
+  </div>
+</div>
+
     </main>
-    <footer>
-        <p>&copy; 2025 IDW. Todos los derechos reservados.</p>
+
+    <footer class="bg-primary text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 IDW. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
