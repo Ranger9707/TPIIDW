@@ -19,6 +19,16 @@ Integrador. Esta estructura deberá tener como mínimo las páginas de: inicio o
 institucional y de contacto.
 - Establezca un estilo para dicha estructura web.
 
+OBJETIVOS DE LA SEGUNDA ENTREGA.
+ - Ponga en práctica todos los conocimientos adquiridos sobre elementos semánticos de HTML, implementación de diseños con CSS, RWD y frameworks CSS.
+ - Adapte el sitio web a múltiples tamaños de pantalla mediante técnicas de diseño web adaptativo (RWD).
+ - Integre un framework CSS (Bootstrap) para facilitar el diseño, la maquetación responsiva y el uso de componentes reutilizables.
+ - Utilización de etiquetas semánticas de HTML5 (por ejemplo: <header>, <nav>, <main>, <section>, <article>, <footer>, etc.).
+ - Adaptación del diseño mediante el uso de clases y componentes de Bootstrap 5:
+ - Deben reemplazarse estilos propios definidos en el archivo CSS por clases provistas por Bootstrap (por ejemplo: sistema de grillas, espaciados, botones, etc.).
+ - Exhibir un catálogo de salones de eventos utilizando el sistema de grillas de Bootstrap.
+ - Incorporación de una barra de navegación funcional, coherente con la estructura del sitio, que permita el acceso a todas las páginas del sitio web
+
 
 CONDICIONES DE ENTREGA
 +  La entrega del primer avance deberá:
