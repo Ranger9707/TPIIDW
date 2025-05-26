@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrar Salones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container my-5">
+    <h1 class="mb-4 text-center">Administración de Salones</h1>
+    <div class="mb-4">
+        <input type="text" id="buscarInput" class="form-control" placeholder="Buscar por nombre...">
+    </div>
+
+    <form id="salonForm" class="mb-5">
+        <input type="hidden" id="salonId">
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Nombre</label>
+                <input type="text" id="nombre" class="form-control" required>
+            </div>
+            <div class="col">
+                <label class="form-label">Dirección</label>
+                <input type="text" id="direccion" class="form-control" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea id="descripcion" class="form-control" rows="2" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">URLs de Imágenes (separadas por coma)</label>
+            <input type="text" id="imagenes" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="reset" class="btn btn-secondary" onclick="resetForm()">Cancelar</button>
+    </form>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Imagen</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tablaSalones"></tbody>
+    </table>
+
+<script type="module">
+import { SALONES_KEY, obtenerSalones, guardarSalones } from './salonesjava.js';
+
+const form = document.getElementById("salonForm");
+const tabla = document.getElementById("tablaSalones");
+
+let salones = obtenerSalones();
+
+function renderTabla(lista = salones) {
+    tabla.innerHTML = "";
+    salones.forEach(salon => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${salon.id}</td>
+            <td>${salon.nombre}</td>
+            <td>${salon.direccion}</td><td><img src="${salon.imagenes[0]}" alt="Vista previa" class="img-thumbnail" style="max-width: 80px;"></td>
+            <td>
+                <button class="btn btn-warning btn-sm me-2" onclick="editarSalon(${salon.id})">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="eliminarSalon(${salon.id})">Eliminar</button>
+            </td>
+        `;
+        tabla.appendChild(row);
+    });
+}
+
+window.editarSalon = (id) => {
+    const salon = salones.find(s => s.id === id);
+    if (salon) {
+        document.getElementById("salonId").value = salon.id;
+        document.getElementById("nombre").value = salon.nombre;
+        document.getElementById("direccion").value = salon.direccion;
+        document.getElementById("descripcion").value = salon.descripcion;
+        document.getElementById("imagenes").value = salon.imagenes.join(", ");
+    }
+};
+
+window.eliminarSalon = (id) => {
+    if (confirm("¿Seguro que querés eliminar este salón?")) {
+        salones = salones.filter(s => s.id !== id);
+        guardarSalones(salones);
+        
+function filtrarTabla() {
+    const filtro = document.getElementById("buscarInput").value.toLowerCase();
+    const filtrados = salones.filter(salon => salon.nombre.toLowerCase().includes(filtro));
+    renderTabla(filtrados);
+}
+
+document.getElementById("buscarInput").addEventListener("input", filtrarTabla);
+renderTabla(salones);
+
+    }
+};
+
+window.resetForm = () => {
+    form.reset();
+    document.getElementById("salonId").value = "";
+};
+
+
+form.addEventListener("submit", e => {
+    
+    const nombre = document.getElementById("nombre").value.trim();
+    const direccion = document.getElementById("direccion").value.trim();
+    const descripcion = document.getElementById("descripcion").value.trim();
+    const imagenesTexto = document.getElementById("imagenes").value.trim();
+    if (!nombre || !direccion || !descripcion || !imagenesTexto) {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+
+    e.preventDefault();
+    const id = parseInt(document.getElementById("salonId").value);
+    const nuevoSalon = {
+        id: id || Date.now(),
+        nombre: document.getElementById("nombre").value.trim(),
+        direccion: document.getElementById("direccion").value.trim(),
+        descripcion: document.getElementById("descripcion").value.trim(),
+        imagenes: document.getElementById("imagenes").value.split(",").map(url => url.trim())
+    };
+
+    if (id) {
+        const index = salones.findIndex(s => s.id === id);
+        if (index !== -1) salones[index] = nuevoSalon;
+    } else {
+        salones.push(nuevoSalon);
+    }
+
+    guardarSalones(salones);
+    
+function filtrarTabla() {
+    const filtro = document.getElementById("buscarInput").value.toLowerCase();
+    const filtrados = salones.filter(salon => salon.nombre.toLowerCase().includes(filtro));
+    renderTabla(filtrados);
+}
+
+document.getElementById("buscarInput").addEventListener("input", filtrarTabla);
+renderTabla(salones);
+
+    form.reset();
+    document.getElementById("salonId").value = "";
+});
+
+
+function filtrarTabla() {
+    const filtro = document.getElementById("buscarInput").value.toLowerCase();
+    const filtrados = salones.filter(salon => salon.nombre.toLowerCase().includes(filtro));
+    renderTabla(filtrados);
+}
+
+document.getElementById("buscarInput").addEventListener("input", filtrarTabla);
+renderTabla(salones);
+
+</script>
+</body>
+</html>
