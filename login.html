@@ -47,7 +47,7 @@
             const clave = document.getElementById("clave").value.trim();
 
             if (usuario === "admin" && clave === "1234") {
-                localStorage.setItem("logueado", "true");
+                sessionStorage.setItem("logueado", "true"); 
                 window.location.href = "adminSalones.html";
             } else {
                 document.getElementById("mensajeError").style.display = "block";
