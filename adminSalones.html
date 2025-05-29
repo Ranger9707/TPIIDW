@@ -7,6 +7,14 @@
 </head>
 <body class="container my-5">
     <h1 class="mb-4 text-center">Administración de Salones</h1>
+
+
+<div class="mb-4 text-center">
+  <a href="index.html" class="btn btn-outline-primary">
+    Volver al Inicio
+  </a>
+</div>
+
     <div class="mb-4">
         <input type="text" id="buscarInput" class="form-control" placeholder="Buscar por nombre...">
     </div>
@@ -48,6 +56,10 @@
     </table>
 
 <script type="module">
+
+if (localStorage.getItem("logueado") !== "true") {
+    window.location.href = "login.html";
+}
 import { SALONES_KEY, obtenerSalones, guardarSalones } from './salonesjava.js';
 
 const form = document.getElementById("salonForm");
