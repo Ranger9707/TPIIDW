@@ -1,68 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
- <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Salones - IDW S.A</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href= "css/estilos.css"
- </head>
+    <link rel="stylesheet" href="css/estilos.css" 
+</head>
 
- <body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100">
 
- <header>
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="Recursos/logo.jpg" alt="Logo IDW" width="100" height="100" class="d-inline-block align-text-top">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-              aria-label="Alternar navegación">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link active" href="salones.html">Salones</a></li>
-          <li class="nav-item"><a class="nav-link" href="institucional.html">Información Institucional</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="login.html">Administración</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
- </header>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="Recursos/logo.jpg" alt="Logo IDW" width="100" height="100"
+                        class="d-inline-block align-text-top">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="salones.html">Salones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="institucional.html">Información Institucional</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="login.html">Administración</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
- <main class="container my-5 flex-grow-1">
-    <h2 class="text-center mb-4">Galería de Salones de Eventos</h2>
-    <div class="row g-4" id="contenedor-salones"></div>
- </main>
+    <main class="container my-5 flex-grow-1">
+        <h2 class="text-center mb-4">Galería de Salones de Eventos</h2>
+        <div class="row g-4" id="contenedor-salones"></div>
+    </main>
 
- <footer class="footer-custom text-white text-center py-3 mt-auto">
- <p class="mb-0">&copy; 2025 IDW. Todos los derechos reservados.</p>
- </footer>
+    <footer class="footer-custom text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 IDW. Todos los derechos reservados.</p>
+    </footer>
 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
- </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
- <script type="module">
-    import { inicializarSalones, obtenerSalones } from './salonesjava.js';
+    <script type="module">
+        import { inicializarSalones, obtenerSalones } from './salonesjava.js';
 
-    document.addEventListener("DOMContentLoaded", () => {
-        inicializarSalones();
+        document.addEventListener("DOMContentLoaded", () => {
+            inicializarSalones();
 
-        const salones = obtenerSalones();
-        const contenedor = document.getElementById('contenedor-salones');
+            const salones = obtenerSalones();
+            const contenedor = document.getElementById('contenedor-salones');
 
-        salones.forEach((salon) => {
-            const div = document.createElement('div');
-            div.className = 'col-md-4';
+            salones.forEach((salon) => {
+                const div = document.createElement('div');
+                div.className = 'col-md-4';
 
-            div.innerHTML = `
+                div.innerHTML = `
             <div class="card h-100 shadow-sm">
                 <div id="carouselSalones${salon.id}" class="carousel slide mb-3" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -91,10 +93,11 @@
                 </div>
             </div>`;
 
-            contenedor.appendChild(div);
+                contenedor.appendChild(div);
+            });
         });
-    });
- </script>
+    </script>
 
- </body>
+</body>
+
 </html>
