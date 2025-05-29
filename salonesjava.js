@@ -79,3 +79,27 @@ export function obtenerSalones() {
 export function guardarSalones(lista) {
     localStorage.setItem(SALONES_KEY, JSON.stringify(lista));
 }
+
+export function renderTabla(salones, tabla) {
+    tabla.innerHTML = "";
+    salones.forEach(salon => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${salon.id}</td>
+            <td>${salon.nombre}</td>
+            <td>${salon.direccion}</td>
+            <td><img src="${salon.imagenes[0]}" alt="Vista previa" class="img-thumbnail" style="max-width: 80px;"></td>
+            <td>
+                <button class="btn btn-warning btn-sm me-2" onclick="editarSalon(${salon.id})">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="eliminarSalon(${salon.id})">Eliminar</button>
+            </td>
+        `;
+        tabla.appendChild(row);
+    });
+}
+
+export function filtrarSalones(salones, filtro) {
+    return salones.filter(salon =>
+        salon.nombre.toLowerCase().includes(filtro.toLowerCase())
+    );
+}
