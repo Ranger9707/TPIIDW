@@ -1,5 +1,7 @@
 export const SALONES_KEY = 'salones_eventos';
 
+
+//         salones iniciales no borrar
 export const salonesIniciales = [
     {
         id: 1,
@@ -80,6 +82,8 @@ export function guardarSalones(lista) {
     localStorage.setItem(SALONES_KEY, JSON.stringify(lista));
 }
 
+// pase las funciones al js porque estaban en el html 
+
 export function renderTabla(salones, tabla) {
     tabla.innerHTML = "";
     salones.forEach(salon => {
@@ -102,4 +106,76 @@ export function filtrarSalones(salones, filtro) {
     return salones.filter(salon =>
         salon.nombre.toLowerCase().includes(filtro.toLowerCase())
     );
+}
+
+export function inicializarAdminSalones() {
+    if (sessionStorage.getItem("logueado") !== "true") {
+        window.location.href = "login.html";
+        return;
+    }
+
+    const form = document.getElementById("salonForm");
+    const tabla = document.getElementById("tablaSalones");
+    const buscarInput = document.getElementById("buscarInput");
+
+    let salones = obtenerSalones();
+
+    function actualizarTabla() {
+        const filtro = buscarInput.value.trim();
+        const filtrados = filtrarSalones(salones, filtro);
+        renderTabla(filtrados, tabla);
+    }
+
+    window.editarSalon = (id) => {
+        const salon = salones.find(s => s.id === id);
+        if (salon) {
+            document.getElementById("salonId").value = salon.id;
+            document.getElementById("nombre").value = salon.nombre;
+            document.getElementById("direccion").value = salon.direccion;
+            document.getElementById("descripcion").value = salon.descripcion;
+            document.getElementById("imagenes").value = salon.imagenes.join(", ");
+        }
+    };
+
+    window.eliminarSalon = (id) => {
+        if (confirm("¿Seguro que querés eliminar este salón?")) {
+            salones = salones.filter(s => s.id !== id);
+            guardarSalones(salones);
+            actualizarTabla();
+        }
+    };
+
+    window.resetForm = () => {
+        form.reset();
+        document.getElementById("salonId").value = "";
+    };
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const id = parseInt(document.getElementById("salonId").value);
+        const nuevoSalon = {
+            id: id || Date.now(),
+            nombre: document.getElementById("nombre").value.trim(),
+            direccion: document.getElementById("direccion").value.trim(),
+            descripcion: document.getElementById("descripcion").value.trim(),
+            imagenes: document.getElementById("imagenes").value.split(",").map(url => url.trim())
+        };
+
+        if (id) {
+            const index = salones.findIndex(s => s.id === id);
+            if (index !== -1) salones[index] = nuevoSalon;
+        } else {
+            salones.push(nuevoSalon);
+        }
+
+        guardarSalones(salones);
+        actualizarTabla();
+        form.reset();
+        document.getElementById("salonId").value = "";
+    });
+
+    buscarInput.addEventListener("input", actualizarTabla);
+
+    actualizarTabla();
 }
