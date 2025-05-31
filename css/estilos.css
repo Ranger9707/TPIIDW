@@ -1,0 +1,19 @@
+
+.footer-custom {
+  background-color: #001f3b;
+}
+.navbar-custom {
+  background-color: #001f3b;
+}
+
+.btn-custom {
+  background-color: #005f9e;
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #00487a;
+  color: #ffffff;
+}
