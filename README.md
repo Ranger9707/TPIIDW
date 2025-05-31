@@ -3,10 +3,10 @@ Trabajo Practico Integrador IDW
 
 
 # Integrantes:
+- Vespa, Matias
 - Casco, Melina Johanna Lisette
 - Cisnero, Daniel Marcelo
-- Contreras, María Gabriela Olivares 
-- Vespa, Matias 
+- Contreras, María Gabriela Olivares
 - Debuck, Jose Ignacio
 
 
