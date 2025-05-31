@@ -138,7 +138,7 @@ export function inicializarAdminSalones() {
     };
 
     window.eliminarSalon = (id) => {
-        if (confirm("¿Seguro que querés eliminar este salón?")) {
+        if (confirm("Seguro que queres eliminar este salon?")) {
             salones = salones.filter(s => s.id !== id);
             guardarSalones(salones);
             actualizarTabla();
