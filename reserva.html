@@ -60,24 +60,7 @@
         <p class="mb-0">&copy; 2025 IDW. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const salonId = urlParams.get("salon");
-            if (salonId) {
-                document.getElementById("salon").value = salonId;
-            }
-
-            document.getElementById("formReserva").addEventListener("submit", (e) => {
-                e.preventDefault();
-                alert("¡Reserva enviada con éxito!");
-                // 
-                // ampliar esto para poder envviar esto al local storage o a una api servidor mas tarde
-                e.target.reset();
-            });
-        });
-    </script>
-
+    <script src="reserva.js"></script>
 </body>
 
 </html>

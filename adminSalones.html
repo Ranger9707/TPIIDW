@@ -38,12 +38,12 @@
             <textarea id="descripcion" class="form-control" rows="2" required></textarea>
         </div>
         <div class="mb-3">
-            <label class="form-label">URLs de Img</label>
+            <label class="form-label">URLs de Img (separadas por coma)</label>
             <input type="text" id="imagenes" class="form-control" required>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
             <button type="submit" class="btn btn-success me-md-2">Guardar/Agregar</button>
-            <button type="reset" class="btn btn-secondary" onclick="resetForm()">Cancelar</button>
+            <button type="reset" class="btn btn-secondary">Cancelar</button>
         </div>
     </form>
 
@@ -62,10 +62,7 @@
         </table>
     </div>
 
-    <script type="module">
-        import { inicializarAdminSalones } from './salonesjava.js';
-        inicializarAdminSalones();
-    </script>
+    <script type="module" src="admin.js"></script>
 </body>
 
 </html>

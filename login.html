@@ -37,21 +37,7 @@
         <a href="index.html" class="btn btn-outline-secondary mt-2 w-100">Volver al Inicio</a>
     </div>
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const usuario = document.getElementById("usuario").value.trim();
-            const clave = document.getElementById("clave").value.trim();
-
-            if (usuario === "admin" && clave === "1234") {
-                sessionStorage.setItem("logueado", "true");
-                window.location.href = "adminSalones.html";
-            } else {
-                document.getElementById("mensajeError").style.display = "block";
-            }
-        });
-    </script>
+    <script src="login.js"></script>
 
 </body>
 
