@@ -1,4 +1,4 @@
-// galeria.js
+
 import { inicializarSalones, obtenerSalones } from './salones-data.js';
 
 document.addEventListener("DOMContentLoaded", () => {

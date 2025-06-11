@@ -1,7 +1,7 @@
-// salones-data.js
+
 export const SALONES_KEY = 'salones_eventos';
 
-// Salones iniciales
+
 export const salonesIniciales = [
     {
         id: 1,
@@ -69,27 +69,19 @@ export const salonesIniciales = [
 ];
 
 
-/**
- * Inicializa los salones en el localStorage si no existen.
- */
+
 export function inicializarSalones() {
     if (!localStorage.getItem(SALONES_KEY)) {
         localStorage.setItem(SALONES_KEY, JSON.stringify(salonesIniciales));
     }
 }
 
-/**
- * Obtiene los salones del localStorage.
- * @returns {Array} La lista de salones.
- */
+
 export function obtenerSalones() {
     return JSON.parse(localStorage.getItem(SALONES_KEY)) || [];
 }
 
-/**
- * Guarda la lista de salones en el localStorage.
- * @param {Array} lista - La lista de salones a guardar.
- */
+
 export function guardarSalones(lista) {
     localStorage.setItem(SALONES_KEY, JSON.stringify(lista));
 }

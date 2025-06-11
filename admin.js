@@ -1,4 +1,4 @@
-// admin.js
+
 import { obtenerSalones, guardarSalones } from './salones-data.js';
 
 let salones = obtenerSalones();

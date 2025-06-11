@@ -1,4 +1,4 @@
-// reserva.js
+
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const salonId = urlParams.get("salon");
@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
         formReserva.addEventListener("submit", (e) => {
             e.preventDefault();
             alert("¡Reserva enviada con éxito!");
-            // Aquí se podría ampliar para enviar a una API o guardar en localStorage
+            // enviar a una API o guardar en localStorage
             e.target.reset();
             if (salonInput) {
-                 salonInput.value = salonId; // Restaura el ID del salón después de resetear
+                 salonInput.value = salonId; // Restaura el ID del salón 
             }
         });
     }
