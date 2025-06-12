@@ -1,85 +1,79 @@
+import { inicializarSalones, obtenerSalones, guardarSalones } from './salones-data.js';
+import { inicializarServicios, obtenerServicios, guardarServicios } from './servicios-data.js';
 
-import { obtenerSalones, guardarSalones } from './salones-data.js';
-
-let salones = obtenerSalones();
-
-function renderTabla(lista, tabla) {
-    tabla.innerHTML = "";
-    lista.forEach(salon => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${salon.id}</td>
-            <td>${salon.nombre}</td>
-            <td>${salon.direccion}</td>
-            <td><img src="${salon.imagenes[0]}" alt="Vista previa" class="img-thumbnail" style="max-width: 80px;"></td>
-            <td>
-                <button class="btn btn-warning btn-sm me-2 editar-btn" data-id="${salon.id}">Editar</button>
-                <button class="btn btn-danger btn-sm eliminar-btn" data-id="${salon.id}">Eliminar</button>
-            </td>
-        `;
-        tabla.appendChild(row);
-    });
-}
-
-function filtrarSalones(filtro) {
-    return salones.filter(salon =>
-        salon.nombre.toLowerCase().includes(filtro.toLowerCase())
-    );
-}
-
+// --- LÓGICA COMÚN Y DE INICIALIZACIÓN ---
 document.addEventListener("DOMContentLoaded", () => {
+    // Redirige si no está logueado
     if (sessionStorage.getItem("logueado") !== "true") {
         window.location.href = "login.html";
         return;
     }
 
+    // Inicializamos ambas lógicas
+    inicializarLogicaSalones();
+    inicializarLogicaServicios();
+});
+
+
+// --- LÓGICA PARA GESTIONAR SALONES ---
+function inicializarLogicaSalones() {
     const form = document.getElementById("salonForm");
     const tabla = document.getElementById("tablaSalones");
     const buscarInput = document.getElementById("buscarInput");
+    let salones = obtenerSalones();
 
-    function actualizarTabla() {
-        const filtro = buscarInput.value.trim();
-        const filtrados = filtrarSalones(filtro);
-        renderTabla(filtrados, tabla);
-    }
+    const renderTablaSalones = (lista) => {
+        tabla.innerHTML = "";
+        lista.forEach(salon => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${salon.id}</td>
+                <td>${salon.nombre}</td>
+                <td>${salon.direccion}</td>
+                <td><img src="${salon.imagenes[0]}" alt="Vista previa" class="img-thumbnail" style="max-width: 80px;"></td>
+                <td>
+                    <button class="btn btn-warning btn-sm me-2 editar-salon-btn" data-id="${salon.id}">Editar</button>
+                    <button class="btn btn-danger btn-sm eliminar-salon-btn" data-id="${salon.id}">Eliminar</button>
+                </td>
+            `;
+            tabla.appendChild(row);
+        });
+    };
 
+    const actualizarTablaSalones = () => {
+        const filtro = buscarInput.value.trim().toLowerCase();
+        const filtrados = salones.filter(s => s.nombre.toLowerCase().includes(filtro));
+        renderTablaSalones(filtrados);
+    };
+    
     tabla.addEventListener("click", (e) => {
-        if (e.target.classList.contains("editar-btn")) {
-            const id = parseInt(e.target.getAttribute("data-id"));
+        const id = parseInt(e.target.getAttribute("data-id"));
+        if (e.target.classList.contains("editar-salon-btn")) {
             const salon = salones.find(s => s.id === id);
             if (salon) {
                 document.getElementById("salonId").value = salon.id;
-                document.getElementById("nombre").value = salon.nombre;
+                document.getElementById("nombreSalon").value = salon.nombre;
                 document.getElementById("direccion").value = salon.direccion;
-                document.getElementById("descripcion").value = salon.descripcion;
+                document.getElementById("descripcionSalon").value = salon.descripcion;
                 document.getElementById("imagenes").value = salon.imagenes.join(", ");
             }
-        } else if (e.target.classList.contains("eliminar-btn")) {
+        } else if (e.target.classList.contains("eliminar-salon-btn")) {
             if (confirm("¿Seguro que quieres eliminar este salón?")) {
-                const id = parseInt(e.target.getAttribute("data-id"));
                 salones = salones.filter(s => s.id !== id);
                 guardarSalones(salones);
-                actualizarTabla();
+                actualizarTablaSalones();
             }
         }
     });
-    
-    const resetButton = form.querySelector('button[type="reset"]');
-    if(resetButton) {
-        resetButton.addEventListener('click', () => {
-            form.reset();
-            document.getElementById("salonId").value = "";
-        });
-    }
 
     form.addEventListener("submit", e => {
         e.preventDefault();
         const id = parseInt(document.getElementById("salonId").value);
         const nuevoSalon = {
             id: id || Date.now(),
-            nombre: document.getElementById("nombre").value.trim(),
+            nombre: document.getElementById("nombreSalon").value.trim(),
             direccion: document.getElementById("direccion").value.trim(),
-            descripcion: document.getElementById("descripcion").value.trim(),
+            descripcion: document.getElementById("descripcionSalon").value.trim(),
             imagenes: document.getElementById("imagenes").value.split(",").map(url => url.trim())
         };
 
@@ -91,11 +85,84 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         guardarSalones(salones);
-        actualizarTabla();
+        actualizarTablaSalones();
         form.reset();
         document.getElementById("salonId").value = "";
     });
 
-    buscarInput.addEventListener("input", actualizarTabla);
-    actualizarTabla();
-});
+    buscarInput.addEventListener("input", actualizarTablaSalones);
+    inicializarSalones();
+    salones = obtenerSalones();
+    actualizarTablaSalones();
+}
+
+
+// --- LÓGICA PARA GESTIONAR SERVICIOS ---
+function inicializarLogicaServicios() {
+    const form = document.getElementById("servicioForm");
+    const tabla = document.getElementById("tablaServicios");
+    let servicios = obtenerServicios();
+
+    const renderTablaServicios = (lista) => {
+        tabla.innerHTML = "";
+        lista.forEach(servicio => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${servicio.id}</td>
+                <td>${servicio.nombre}</td>
+                <td><img src="${servicio.imagen}" alt="Vista previa" class="img-thumbnail" style="max-width: 100px;"></td>
+                <td>
+                    <button class="btn btn-warning btn-sm me-2 editar-servicio-btn" data-id="${servicio.id}">Editar</button>
+                    <button class="btn btn-danger btn-sm eliminar-servicio-btn" data-id="${servicio.id}">Eliminar</button>
+                </td>
+            `;
+            tabla.appendChild(row);
+        });
+    };
+    
+    tabla.addEventListener("click", (e) => {
+        const id = parseInt(e.target.getAttribute("data-id"));
+        if (e.target.classList.contains("editar-servicio-btn")) {
+             const servicio = servicios.find(s => s.id === id);
+            if (servicio) {
+                document.getElementById("servicioId").value = servicio.id;
+                document.getElementById("nombreServicio").value = servicio.nombre;
+                document.getElementById("descripcionServicio").value = servicio.descripcion;
+                document.getElementById("imagenServicio").value = servicio.imagen;
+            }
+        } else if (e.target.classList.contains("eliminar-servicio-btn")) {
+            if (confirm("¿Está seguro de que desea eliminar este servicio?")) {
+                servicios = servicios.filter(s => s.id !== id);
+                guardarServicios(servicios);
+                renderTablaServicios(servicios);
+            }
+        }
+    });
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        const id = parseInt(document.getElementById("servicioId").value);
+        const nuevoServicio = {
+            id: id || Date.now(),
+            nombre: document.getElementById("nombreServicio").value.trim(),
+            descripcion: document.getElementById("descripcionServicio").value.trim(),
+            imagen: document.getElementById("imagenServicio").value.trim()
+        };
+
+        if (id) {
+            const index = servicios.findIndex(s => s.id === id);
+            if (index !== -1) servicios[index] = nuevoServicio;
+        } else {
+            servicios.push(nuevoServicio);
+        }
+
+        guardarServicios(servicios);
+        renderTablaServicios(servicios);
+        form.reset();
+        document.getElementById("servicioId").value = "";
+    });
+
+    inicializarServicios();
+    servicios = obtenerServicios();
+    renderTablaServicios(servicios);
+}
