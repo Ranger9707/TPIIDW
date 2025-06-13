@@ -56,7 +56,7 @@ function inicializarLogicaSalones() {
                 document.getElementById("imagenes").value = salon.imagenes.join(", ");
             }
         } else if (e.target.classList.contains("eliminar-salon-btn")) {
-            if (confirm("¿Seguro que quieres eliminar este salón?")) {
+            if (confirm("¿Seguro que queres eliminar este salon?")) {
                 salones = salones.filter(s => s.id !== id);
                 guardarSalones(salones);
                 actualizarTablaSalones();
@@ -128,7 +128,7 @@ function inicializarLogicaServicios() {
                 document.getElementById("imagenServicio").value = servicio.imagen;
             }
         } else if (e.target.classList.contains("eliminar-servicio-btn")) {
-            if (confirm("¿Está seguro de que desea eliminar este servicio?")) {
+            if (confirm("¿Estas seguro de que queres eliminar este servicio?")) {
                 servicios = servicios.filter(s => s.id !== id);
                 guardarServicios(servicios);
                 renderTablaServicios(servicios);

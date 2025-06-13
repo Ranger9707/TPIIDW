@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formReserva.addEventListener("submit", (e) => {
         e.preventDefault();
         const totalFinal = totalPresupuesto.textContent;
-        alert(`¡Reserva enviada con éxito! El total de su presupuesto es: ${totalFinal}`);
+        alert(`¡Reserva enviada con éxito! El total de su presupuesto es de: ${totalFinal}`);
         e.target.reset();
         actualizarPresupuesto(); // Resetear el presupuesto visual
     });
