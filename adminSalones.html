@@ -27,7 +27,8 @@
 
     <div class="tab-content" id="adminTabContent">
 
-        <div class="tab-pane fade show active" id="salones-tab-pane" role="tabpanel" aria-labelledby="salones-tab" tabindex="0">
+        <div class="tab-pane fade show active" id="salones-tab-pane" role="tabpanel" aria-labelledby="salones-tab"
+            tabindex="0">
             <div class="p-3 border border-top-0">
                 <h2 class="h4 mt-3">Editor de Salones</h2>
                 <div class="mb-4">
@@ -35,20 +36,26 @@
                 </div>
                 <form id="salonForm" class="mb-5">
                     <input type="hidden" id="salonId">
-                    <div class="mb-3">
-                        <label class="form-label">Nombre</label>
-                        <input type="text" id="nombreSalon" class="form-control" required>
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label for="nombreSalon" class="form-label">Nombre</label>
+                            <input type="text" id="nombreSalon" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="precioSalon" class="form-label">Precio Base ($)</label>
+                            <input type="number" id="precioSalon" class="form-control" required>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Dirección</label>
+                        <label for="direccion" class="form-label">Dirección</label>
                         <input type="text" id="direccion" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Descripción</label>
+                        <label for="descripcionSalon" class="form-label">Descripción</label>
                         <textarea id="descripcionSalon" class="form-control" rows="2" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">URLs de Imágenes (separadas por coma)</label>
+                        <label for="imagenes" class="form-label">URLs de Imágenes (separadas por coma)</label>
                         <input type="text" id="imagenes" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-success">Guardar/Agregar Salón</button>
@@ -76,16 +83,22 @@
                 <h2 class="h4 mt-3">Editor de Servicios</h2>
                 <form id="servicioForm" class="mb-5">
                     <input type="hidden" id="servicioId">
-                    <div class="mb-3">
-                        <label class="form-label">Nombre del Servicio</label>
-                        <input type="text" id="nombreServicio" class="form-control" required>
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label for="nombreServicio" class="form-label">Nombre del Servicio</label>
+                            <input type="text" id="nombreServicio" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="precioServicio" class="form-label">Precio ($)</label>
+                            <input type="number" id="precioServicio" class="form-control" required>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Descripción</label>
+                        <label for="descripcionServicio" class="form-label">Descripción</label>
                         <textarea id="descripcionServicio" class="form-control" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">URL de la Imagen</label>
+                        <label for="imagenServicio" class="form-label">URL de la Imagen</label>
                         <input type="text" id="imagenServicio" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-success">Guardar/Agregar Servicio</button>

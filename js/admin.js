@@ -1,26 +1,23 @@
 import { inicializarSalones, obtenerSalones, guardarSalones } from './salones-data.js';
 import { inicializarServicios, obtenerServicios, guardarServicios } from './servicios-data.js';
 
-// --- LÓGICA COMÚN Y DE INICIALIZACIÓN ---
 document.addEventListener("DOMContentLoaded", () => {
-    // Redirige si no está logueado
     if (sessionStorage.getItem("logueado") !== "true") {
         window.location.href = "login.html";
         return;
     }
-
-    // Inicializamos ambas lógicas
     inicializarLogicaSalones();
     inicializarLogicaServicios();
 });
 
-
-// --- LÓGICA PARA GESTIONAR SALONES ---
 function inicializarLogicaSalones() {
+    // primero se tienen q inicializar los datos y desps se obtienen, si no se rompe, 
+    inicializarSalones();
+    let salones = obtenerSalones();
+
     const form = document.getElementById("salonForm");
     const tabla = document.getElementById("tablaSalones");
     const buscarInput = document.getElementById("buscarInput");
-    let salones = obtenerSalones();
 
     const renderTablaSalones = (lista) => {
         tabla.innerHTML = "";
@@ -45,7 +42,7 @@ function inicializarLogicaSalones() {
         const filtrados = salones.filter(s => s.nombre.toLowerCase().includes(filtro));
         renderTablaSalones(filtrados);
     };
-    
+
     tabla.addEventListener("click", (e) => {
         const id = parseInt(e.target.getAttribute("data-id"));
         if (e.target.classList.contains("editar-salon-btn")) {
@@ -53,6 +50,7 @@ function inicializarLogicaSalones() {
             if (salon) {
                 document.getElementById("salonId").value = salon.id;
                 document.getElementById("nombreSalon").value = salon.nombre;
+                document.getElementById("precioSalon").value = salon.precio; 
                 document.getElementById("direccion").value = salon.direccion;
                 document.getElementById("descripcionSalon").value = salon.descripcion;
                 document.getElementById("imagenes").value = salon.imagenes.join(", ");
@@ -72,18 +70,17 @@ function inicializarLogicaSalones() {
         const nuevoSalon = {
             id: id || Date.now(),
             nombre: document.getElementById("nombreSalon").value.trim(),
+            precio: parseInt(document.getElementById("precioSalon").value) || 0,
             direccion: document.getElementById("direccion").value.trim(),
             descripcion: document.getElementById("descripcionSalon").value.trim(),
             imagenes: document.getElementById("imagenes").value.split(",").map(url => url.trim())
         };
-
         if (id) {
             const index = salones.findIndex(s => s.id === id);
             if (index !== -1) salones[index] = nuevoSalon;
         } else {
             salones.push(nuevoSalon);
         }
-
         guardarSalones(salones);
         actualizarTablaSalones();
         form.reset();
@@ -91,17 +88,16 @@ function inicializarLogicaSalones() {
     });
 
     buscarInput.addEventListener("input", actualizarTablaSalones);
-    inicializarSalones();
-    salones = obtenerSalones();
-    actualizarTablaSalones();
+    actualizarTablaSalones(); // Carga inicial
 }
 
-
-// --- LÓGICA PARA GESTIONAR SERVICIOS ---
 function inicializarLogicaServicios() {
+    // primero se tienen q inicializar los datos y desps se obtienen, si no se rompe, igual q con los salones
+    inicializarServicios();
+    let servicios = obtenerServicios();
+
     const form = document.getElementById("servicioForm");
     const tabla = document.getElementById("tablaServicios");
-    let servicios = obtenerServicios();
 
     const renderTablaServicios = (lista) => {
         tabla.innerHTML = "";
@@ -119,14 +115,15 @@ function inicializarLogicaServicios() {
             tabla.appendChild(row);
         });
     };
-    
+
     tabla.addEventListener("click", (e) => {
         const id = parseInt(e.target.getAttribute("data-id"));
         if (e.target.classList.contains("editar-servicio-btn")) {
-             const servicio = servicios.find(s => s.id === id);
+            const servicio = servicios.find(s => s.id === id);
             if (servicio) {
                 document.getElementById("servicioId").value = servicio.id;
                 document.getElementById("nombreServicio").value = servicio.nombre;
+                document.getElementById("precioServicio").value = servicio.precio; 
                 document.getElementById("descripcionServicio").value = servicio.descripcion;
                 document.getElementById("imagenServicio").value = servicio.imagen;
             }
@@ -145,24 +142,21 @@ function inicializarLogicaServicios() {
         const nuevoServicio = {
             id: id || Date.now(),
             nombre: document.getElementById("nombreServicio").value.trim(),
+            precio: parseInt(document.getElementById("precioServicio").value) || 0,
             descripcion: document.getElementById("descripcionServicio").value.trim(),
             imagen: document.getElementById("imagenServicio").value.trim()
         };
-
         if (id) {
             const index = servicios.findIndex(s => s.id === id);
             if (index !== -1) servicios[index] = nuevoServicio;
         } else {
             servicios.push(nuevoServicio);
         }
-
         guardarServicios(servicios);
         renderTablaServicios(servicios);
         form.reset();
         document.getElementById("servicioId").value = "";
     });
-
-    inicializarServicios();
-    servicios = obtenerServicios();
-    renderTablaServicios(servicios);
+    
+    renderTablaServicios(servicios); // Carga inicial
 }
