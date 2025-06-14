@@ -2,12 +2,17 @@ import { inicializarSalones, obtenerSalones, guardarSalones } from './salones-da
 import { inicializarServicios, obtenerServicios, guardarServicios } from './servicios-data.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (sessionStorage.getItem("logueado") !== "true") {
-        window.location.href = "login.html";
+    // 1. Verificamos si existe el token en sessionStorage
+    if (!sessionStorage.getItem("authToken")) {
+        window.location.href = "login.html"; // Si no existe, redirigimos al login
         return;
     }
+
+    // 2. Si existe, inicializamos todas las lógicas del panel
     inicializarLogicaSalones();
     inicializarLogicaServicios();
+    inicializarLogicaUsuarios();
+    inicializarLogout();
 });
 
 function inicializarLogicaSalones() {
@@ -159,4 +164,48 @@ function inicializarLogicaServicios() {
     });
     
     renderTablaServicios(servicios); // Carga inicial
+}
+
+function inicializarLogout() {
+    const logoutButton = document.getElementById("logoutButton");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", () => {
+            sessionStorage.removeItem("authToken"); // Eliminamos el token
+            sessionStorage.removeItem("userName");
+            window.location.href = "login.html"; // Redirigimos al login
+        });
+    }
+}
+
+// --- LÓGICA PARA GESTIONAR USUARIOS ---
+function inicializarLogicaUsuarios() {
+    const tabla = document.getElementById("tablaUsuarios");
+    
+    // Hacemos la petición GET a la API de DummyJSON para obtener los usuarios
+    fetch('https://dummyjson.com/users')
+    .then(res => res.json())
+    .then(data => {
+        renderTablaUsuarios(data.users, tabla);
+    })
+    .catch(error => {
+        console.error("Error al cargar los usuarios:", error);
+        tabla.innerHTML = `<tr><td colspan="6" class="text-center text-danger">No se pudieron cargar los usuarios.</td></tr>`;
+    });
+}
+
+function renderTablaUsuarios(lista, tabla) {
+    tabla.innerHTML = "";
+    lista.forEach(user => {
+        const row = document.createElement("tr");
+        // No publicamos datos sensibles como contraseñas, datos bancarios, etc.
+        row.innerHTML = `
+            <td><img src="${user.image}" alt="Foto de ${user.firstName}" class="img-fluid rounded-circle" style="width: 40px; height: 40px;"></td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.email}</td>
+            <td>${user.username}</td>
+            <td>${user.role}</td>
+        `;
+        tabla.appendChild(row);
+    });
 }
