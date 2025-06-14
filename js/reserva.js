@@ -16,17 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // dom
     const tituloSalon = document.getElementById('nombre-salon-titulo');
     const contenedorServicios = document.getElementById('contenedor-servicios');
     const detallePresupuesto = document.getElementById('presupuesto-detalle');
     const totalPresupuesto = document.getElementById('presupuesto-total');
     const formReserva = document.getElementById('formReserva');
 
-    // UI
     tituloSalon.textContent = `Reservar: ${salonSeleccionado.nombre}`;
 
-    // checkboxes para servicios
+    // checkboxes para servicios, no se si estan bien hechos despue slo miro mejor
     servicios.forEach(servicio => {
         const div = document.createElement('div');
         div.className = 'form-check';
@@ -60,10 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
         totalPresupuesto.textContent = `$${total.toLocaleString()}`;
     };
 
-    // Event listener para los checkboxes
+   
     contenedorServicios.addEventListener('change', actualizarPresupuesto);
 
-    // Event listener para el formulario
+   
     formReserva.addEventListener("submit", (e) => {
         e.preventDefault();
         const totalFinal = totalPresupuesto.textContent;

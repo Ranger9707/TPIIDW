@@ -2,13 +2,13 @@ import { inicializarSalones, obtenerSalones, guardarSalones } from './salones-da
 import { inicializarServicios, obtenerServicios, guardarServicios } from './servicios-data.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Verificamos si existe el token en sessionStorage
+    //verifico si existe el token en sessionStorage
     if (!sessionStorage.getItem("authToken")) {
-        window.location.href = "login.html"; // Si no existe, redirigimos al login
+        window.location.href = "login.html"; // Si no existe redirigo al login
         return;
     }
 
-    // 2. Si existe, inicializamos todas las lógicas del panel
+    //si existe inicio la logica
     inicializarLogicaSalones();
     inicializarLogicaServicios();
     inicializarLogicaUsuarios();
@@ -177,11 +177,10 @@ function inicializarLogout() {
     }
 }
 
-// --- LÓGICA PARA GESTIONAR USUARIOS ---
 function inicializarLogicaUsuarios() {
     const tabla = document.getElementById("tablaUsuarios");
     
-    // Hacemos la petición GET a la API de DummyJSON para obtener los usuarios
+    // petición GET a la API
     fetch('https://dummyjson.com/users')
     .then(res => res.json())
     .then(data => {
@@ -197,7 +196,7 @@ function renderTablaUsuarios(lista, tabla) {
     tabla.innerHTML = "";
     lista.forEach(user => {
         const row = document.createElement("tr");
-        // No publicamos datos sensibles como contraseñas, datos bancarios, etc.
+        // elegi la informacion deseada especifica, sin nada sensible
         row.innerHTML = `
             <td><img src="${user.image}" alt="Foto de ${user.firstName}" class="img-fluid rounded-circle" style="width: 40px; height: 40px;"></td>
             <td>${user.firstName}</td>
