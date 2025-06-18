@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const precioFormateado = (salon.precio || 0).toLocaleString();
 
-            // Lógica para crear el botón correcto según el estado del salón
             let botonHtml = '';
             let badgeHtml = '';
 
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 badgeHtml = '<span class="badge bg-danger position-absolute top-0 start-0 m-2">Reservado</span>';
                 botonHtml = '<button class="btn btn-secondary mt-auto" disabled>No Disponible</button>';
             } else {
-                // Se crea un enlace <a> estándar y funcional
                 botonHtml = `<a href="reserva.html?salon=${salon.id}" class="btn btn-custom mt-auto">
                                 <i class="fas fa-calendar-check"></i> Reservar ahora
                              </a>`;

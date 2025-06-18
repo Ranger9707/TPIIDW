@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Obtenemos la última reserva guardada, que es la que se acaba de hacer.
+    // ultima reserva guardada que es la que se acaba de hacer
     const ultimaReserva = reservas[reservas.length - 1];
 
-    // Creamos el HTML con los detalles de la reserva.
+    // HTML con los detalles de la reserva
     let serviciosHtml = '';
     if (ultimaReserva.servicios && ultimaReserva.servicios.length > 0) {
         serviciosHtml = `

@@ -1,15 +1,13 @@
 import { inicializarSalones, obtenerSalones, guardarSalones } from './salones-data.js';
 import { inicializarServicios, obtenerServicios, guardarServicios } from './servicios-data.js';
-// Se importa la funcionalidad del nuevo archivo de reservas
 import { obtenerReservas, guardarListaDeReservas } from './reservas-data.js';
 
-// --- LÓGICA DE INICIALIZACIÓN Y AUTENTICACIÓN ---
+// INICIALIZACION
 document.addEventListener("DOMContentLoaded", () => {
     if (!sessionStorage.getItem("authToken")) {
         window.location.href = "login.html";
         return;
     }
-    // Se inicializan todas las lógicas, incluyendo las nuevas
     inicializarLogicaSalones();
     inicializarLogicaServicios();
     inicializarLogicaUsuarios();
@@ -28,7 +26,7 @@ function inicializarLogout() {
     }
 }
 
-// --- LÓGICA PARA GESTIONAR SALONES ---
+// LOGICA SALONES
 function inicializarLogicaSalones() {
     inicializarSalones();
     let salones = obtenerSalones();
@@ -117,7 +115,7 @@ function inicializarLogicaSalones() {
     actualizarTablaSalones();
 }
 
-// --- LÓGICA PARA GESTIONAR SERVICIOS ---
+// LOGICA SERVICIOS
 function inicializarLogicaServicios() {
     inicializarServicios();
     let servicios = obtenerServicios();
@@ -187,7 +185,7 @@ function inicializarLogicaServicios() {
     renderTablaServicios(servicios);
 }
 
-// --- LÓGICA PARA GESTIONAR USUARIOS ---
+//LOGICA USUARIOS
 function inicializarLogicaUsuarios() {
     const tabla = document.getElementById("tablaUsuarios");
     if (!tabla) return;
@@ -219,7 +217,7 @@ function renderTablaUsuarios(lista, tabla) {
     });
 }
 
-// --- LÓGICA PARA GESTIONAR RESERVAS ---
+//LOGICA RESERVAS
 function inicializarLogicaReservas() {
     const tabla = document.getElementById("tablaReservas");
     if (!tabla) return;

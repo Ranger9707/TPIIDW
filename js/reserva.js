@@ -3,7 +3,6 @@ import { obtenerServicios, inicializarServicios } from './servicios-data.js';
 import { guardarReserva } from './reservas-data.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Nos aseguramos de que la lista de servicios exista en localStorage
     inicializarServicios();
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -75,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Evento 'submit' detectado. Iniciando proceso de reserva...");
 
         try {
-            // 1. Recopilar datos
             const serviciosSeleccionados = Array.from(document.querySelectorAll('#contenedor-servicios input:checked'))
                 .map(input => ({
                     id: parseInt(input.value),
@@ -98,24 +96,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 total: totalPresupuestoElem.textContent
             };
 
-            // 2. Guardar la nueva reserva
             console.log("Guardando la reserva...");
             guardarReserva(nuevaReserva);
             console.log("Reserva guardada en localStorage.");
 
-            // 3. Actualizar el estado del salón
             console.log("Actualizando estado del salón...");
             const salonIndex = todosLosSalones.findIndex(s => s.id === salonSeleccionado.id);
             if (salonIndex !== -1) {
                 todosLosSalones[salonIndex].estado = 'Reservado';
-                // 4. Guardar la lista de salones actualizada
                 guardarSalones(todosLosSalones);
                 console.log("Estado del salón guardado.");
             } else {
                 console.error("No se encontró el índice del salón para actualizar.");
             }
 
-            // 5. Redirigir a la página de confirmación
             console.log("Redirigiendo a confirmacionReserva.html...");
             window.location.href = 'confirmacionReserva.html';
 
@@ -125,6 +119,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     
-    // Carga inicial del presupuesto
     actualizarPresupuesto();
 });
