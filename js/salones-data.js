@@ -10,6 +10,7 @@ export const salonesIniciales = [
         direccion: 'Av. Directorio 3245 – Parque Chacabuco, CABA',
         imagenes: ['Recursos/Salon1.jpg', 'Recursos/Salon_a.jpg'],
         precio: 144000,
+        estado: 'Disponible'
     },
     {
         id: 2,
@@ -18,6 +19,7 @@ export const salonesIniciales = [
         direccion: 'Calle Suipacha 935 – Microcentro, CABA.',
         imagenes: ['Recursos/Salon2.jpg', 'Recursos/salon_b.jpg'],
         precio: 144000,
+        estado: 'Disponible'
     },
     {
         id: 3,
@@ -26,6 +28,7 @@ export const salonesIniciales = [
         direccion: 'Av. de los Incas 4520 – Villa Urquiza, CABA.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
         precio: 144000,
+        estado: 'Disponible'
     },
     {
         id: 4,
@@ -34,6 +37,7 @@ export const salonesIniciales = [
         direccion: 'Pje. Bollini 1486 – Palermo Chico, CABA.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
         precio: 144000,
+        estado: 'Disponible'
     },
     {
         id: 5,
@@ -42,6 +46,7 @@ export const salonesIniciales = [
         direccion: 'Av. Rivadavia 17555 – Ramos Mejía, Buenos Aires.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
         precio: 144000,
+        estado: 'Disponible'
     },
     {
         id: 6,
@@ -50,6 +55,7 @@ export const salonesIniciales = [
         direccion: 'Av. Belgrano 3785 – Almagro, CABA.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
         precio: 144000,
+        estado: 'Disponible'
     },
 
 ];
