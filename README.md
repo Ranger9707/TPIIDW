@@ -11,7 +11,6 @@ Trabajo Practico Integrador IDW
 
 
 OBJETIVOS DE LA PRIMERA ENTREGA.
-+  Son objetivos de esta primer entrega que el estudiante:
 - Ponga en práctica todos los conocimientos adquiridos sobre HTML y CSS.
 - Defina la estructura de la aplicación web que servirá como base para la realización del Trabajo Final
 Integrador. Esta estructura deberá tener como mínimo las páginas de: inicio o portada, información
@@ -38,6 +37,17 @@ OBJETIVOS DE LA TERCERA ENTREGA.
  - Desplegar los datos de los salones de eventos de manera tabulada utilizando tablas HTML.
  - Utilizar los elementos de formulario HTML apropiados para cada tipo de dato.
  - Modificar el catálogo de salones de forma que los datos que allí se muestran sean consumidos desde el LocalStorage.
+
+OBJETIVOS DE LA CUARTA ENTREGA.
+ - Ponga en práctica todos los conocimientos adquiridos sobre JavaScript y Fetch API.
+ - Permita que la aplicación del lado del cliente se conecte con recursos de información externos.
+ - Implementar la funcionalidad de inicio de sesión de usuario utilizando la API Rest pública auth/login provista por DummyJSON. A tal fin, se presentan los siguientes datos:
+ - La URL para iniciar sesión es https://dummyjson.com/auth/login
+ - La lista de nombres de usuarios y contraseñas válidos están listadas en: https://dummyjson.com/users
+ - Una vez iniciada la sesión, se deberá guardar el accessToken en sessionStorage.
+ - No se deberá permitir acceder a las funcionalidades de administración a usuarios que no se encuentren logueados.
+ - Agregar una nueva página al panel de administración donde se muestren todos los usuarios registrados en https://dummyjson.com/users (verificar que no se publiquen datos sensibles).
+ -  Cumplimentar las funcionalidades de Listado, Creación, Modificación y Eliminación de todas las entidades
 
 CONDICIONES DE ENTREGA
 +  La entrega deberá:
