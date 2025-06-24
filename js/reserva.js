@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tituloSalon.textContent = `Reservar: ${salonSeleccionado.nombre}`;
 
-    // Generar checkboxes para los servicios
     servicios.forEach(servicio => {
         const div = document.createElement('div');
         div.className = 'form-check';
@@ -42,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         contenedorServicios.appendChild(div);
     });
 
-    // Función para actualizar el presupuesto
     const actualizarPresupuesto = () => {
         let total = salonSeleccionado.precio;
         let detalleHtml = `<p class="d-flex justify-content-between"><span>Costo del Salón:</span> <strong>$${(salonSeleccionado.precio || 0).toLocaleString()}</strong></p>`;
@@ -63,12 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
         totalPresupuestoElem.textContent = `$${total.toLocaleString()}`;
     };
 
-    // Event listener para los checkboxes de servicios
     contenedorServicios.addEventListener('change', actualizarPresupuesto);
 
-    // Event listener para el formulario
     formReserva.addEventListener("submit", (e) => {
-        e.preventDefault(); // Detenemos el envío normal del formulario
+        e.preventDefault(); 
 
         console.log("Evento 'submit' detectado. Iniciando proceso de reserva...");
 
