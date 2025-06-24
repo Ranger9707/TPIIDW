@@ -26,7 +26,6 @@ export const serviciosIniciales = [
     }
 ];
 
-// servicios por defecto, si no hay nada en el localStorage, habria que agregar alguna imagen, pero eso tambien queda bien
 
 export function inicializarServicios() {
     if (!localStorage.getItem(SERVICIOS_KEY)) {

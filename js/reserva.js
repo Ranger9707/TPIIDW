@@ -18,16 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Elementos del DOM
+
     const tituloSalon = document.getElementById('nombre-salon-titulo');
     const contenedorServicios = document.getElementById('contenedor-servicios');
     const detallePresupuesto = document.getElementById('presupuesto-detalle');
     const totalPresupuestoElem = document.getElementById('presupuesto-total');
     const formReserva = document.getElementById('formReserva');
 
-    if (!formReserva) return; // Salida temprana si el formulario no existe
+    if (!formReserva) return; 
 
-    // Inicializar la UI
     tituloSalon.textContent = `Reservar: ${salonSeleccionado.nombre}`;
 
     // Generar checkboxes para los servicios
