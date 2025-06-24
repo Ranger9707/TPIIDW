@@ -8,7 +8,7 @@ export const salonesIniciales = [
         descripcion: 'Un espacio versátil y luminoso, ideal para celebraciones familiares, cumpleaños infantiles y reuniones sociales. Cuenta con juegos para niños, cocina equipada y patio al aire libre. Capacidad: hasta 100 personas.',
         direccion: 'Av. Directorio 3245 – Parque Chacabuco, CABA',
         imagenes: ['Recursos/Salon1.jpg', 'Recursos/Salon_a.jpg'],
-        precio: 144000,
+        precio: 198000,
         estado: 'Disponible'
     },
     {
@@ -26,7 +26,7 @@ export const salonesIniciales = [
         descripcion: 'Rodeado de naturaleza, este salón al aire libre es perfecto para eventos diurnos, celebraciones campestres y encuentros informales. Posee quincho, pileta y área de juegos. Capacidad: hasta 150 personas.',
         direccion: 'Av. de los Incas 4520 – Villa Urquiza, CABA.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
-        precio: 144000,
+        precio: 164000,
         estado: 'Disponible'
     },
     {
@@ -35,7 +35,7 @@ export const salonesIniciales = [
         descripcion: 'Ambiente elegante y sofisticado, ideal para fiestas de 15, bodas y aniversarios. Decoración glamorosa, pista de baile y servicio de ambientación personalizado. Capacidad: hasta 200 personas.',
         direccion: 'Pje. Bollini 1486 – Palermo Chico, CABA.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
-        precio: 144000,
+        precio: 184000,
         estado: 'Disponible'
     },
     {
@@ -44,7 +44,7 @@ export const salonesIniciales = [
         descripcion: 'Funcional y accesible, pensado para talleres, capacitaciones, reuniones empresariales y encuentros profesionales. WiFi de alta velocidad, proyector y mobiliario adaptable. Capacidad: hasta 60 personas.',
         direccion: 'Av. Rivadavia 17555 – Ramos Mejía, Buenos Aires.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
-        precio: 144000,
+        precio: 124000,
         estado: 'Disponible'
     },
     {
@@ -53,7 +53,7 @@ export const salonesIniciales = [
         descripcion: 'Temático y divertido, ideal para cumpleaños infantiles y fiestas con animación. Incluye inflables, luces de colores, escenario y cabina de DJ. Capacidad: hasta 90 personas.',
         direccion: 'Av. Belgrano 3785 – Almagro, CABA.',
         imagenes: ['Recursos/Salon3.jpg', 'Recursos/salon_c.jpg'],
-        precio: 144000,
+        precio: 234000,
         estado: 'Disponible'
     },
 
