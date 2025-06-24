@@ -2,9 +2,12 @@ import { inicializarSalones, obtenerSalones, guardarSalones } from './salones-da
 import { inicializarServicios, obtenerServicios, guardarServicios } from './servicios-data.js';
 import { obtenerReservas, guardarListaDeReservas } from './reservas-data.js';
 
-// INICIALIZACION
 document.addEventListener("DOMContentLoaded", () => {
-    if (!sessionStorage.getItem("authToken")) {
+    const authToken = sessionStorage.getItem("authToken");
+    const userRole = sessionStorage.getItem("userRole");
+
+    if (!authToken || userRole !== 'admin') {
+        sessionStorage.clear();
         window.location.href = "login.html";
         return;
     }
@@ -14,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarLogicaReservas();
     inicializarLogout();
 });
-
 function inicializarLogout() {
     const logoutButton = document.getElementById("logoutButton");
     if (logoutButton) {
