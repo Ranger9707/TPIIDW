@@ -1,7 +1,6 @@
 
 export const SALONES_KEY = 'salones_eventos';
 
-
 export const salonesIniciales = [
     {
         id: 1,
@@ -60,19 +59,15 @@ export const salonesIniciales = [
 
 ];
 
-
-
 export function inicializarSalones() {
     if (!localStorage.getItem(SALONES_KEY)) {
         localStorage.setItem(SALONES_KEY, JSON.stringify(salonesIniciales));
     }
 }
 
-
 export function obtenerSalones() {
     return JSON.parse(localStorage.getItem(SALONES_KEY)) || [];
 }
-
 
 export function guardarSalones(lista) {
     localStorage.setItem(SALONES_KEY, JSON.stringify(lista));

@@ -1,6 +1,4 @@
-
 export const SERVICIOS_KEY = 'servicios_adicionales';
-
 
 export const serviciosIniciales = [
     {
@@ -26,18 +24,15 @@ export const serviciosIniciales = [
     }
 ];
 
-
 export function inicializarServicios() {
     if (!localStorage.getItem(SERVICIOS_KEY)) {
         localStorage.setItem(SERVICIOS_KEY, JSON.stringify(serviciosIniciales));
     }
 }
 
-
 export function obtenerServicios() {
     return JSON.parse(localStorage.getItem(SERVICIOS_KEY)) || [];
 }
-
 
 export function guardarServicios(lista) {
     localStorage.setItem(SERVICIOS_KEY, JSON.stringify(lista));

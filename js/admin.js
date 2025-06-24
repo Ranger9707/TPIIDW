@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarLogicaReservas();
     inicializarLogout();
 });
+
 function inicializarLogout() {
     const logoutButton = document.getElementById("logoutButton");
     if (logoutButton) {
