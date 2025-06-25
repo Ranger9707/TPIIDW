@@ -44,16 +44,17 @@ function inicializarLogout() {
     }
 }
 
-// LOGICA SALONES
+// LOGICA SALONES 
 function inicializarLogicaSalones() {
     inicializarSalones();
     let salones = obtenerSalones();
     const form = document.getElementById("salonForm");
     const tabla = document.getElementById("tablaSalones");
     const buscarInput = document.getElementById("buscarInput");
-
     const imageSelector = document.getElementById("imageSelector");
     const addImageBtn = document.getElementById("addImageBtn");
+    const imageUrlInput = document.getElementById("imageUrlInput");
+    const addImageFromUrlBtn = document.getElementById("addImageFromUrlBtn");
     const selectedImagesContainer = document.getElementById("selectedImagesContainer");
     let currentSelectedImages = [];
 
@@ -90,6 +91,25 @@ function inicializarLogicaSalones() {
         });
     }
 
+    if (addImageFromUrlBtn) {
+        addImageFromUrlBtn.addEventListener("click", () => {
+            const imageUrl = imageUrlInput.value.trim();
+            if (!imageUrl || !(imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
+                alert("Por favor, ingrese una URL válida que comience con http:// o https://");
+                return;
+            }
+
+            if (currentSelectedImages.includes(imageUrl)) {
+                alert("Esta imagen ya ha sido agregada.");
+                return;
+            }
+            
+            currentSelectedImages.push(imageUrl);
+            renderSelectedImages();
+            imageUrlInput.value = ""; 
+        });
+    }
+
     if (selectedImagesContainer) {
         selectedImagesContainer.addEventListener("click", e => {
             if (e.target.matches('.btn-close')) {
@@ -99,8 +119,7 @@ function inicializarLogicaSalones() {
             }
         });
     }
-
-
+    
     const renderTablaSalones = (lista) => {
         if (!tabla) return;
         tabla.innerHTML = "";
@@ -171,7 +190,7 @@ function inicializarLogicaSalones() {
             estado: document.getElementById("estadoSalon").value,
             direccion: document.getElementById("direccion").value.trim(),
             descripcion: document.getElementById("descripcionSalon").value.trim(),
-            imagenes: currentSelectedImages 
+            imagenes: currentSelectedImages
         };
 
         if (id) {
@@ -187,6 +206,8 @@ function inicializarLogicaSalones() {
         currentSelectedImages = [];
         renderSelectedImages();
     });
+
+
 
     buscarInput.addEventListener("input", actualizarTablaSalones);
     actualizarTablaSalones();
@@ -264,7 +285,7 @@ function inicializarLogicaServicios() {
 }
 
 
-//LOGICA USUARIOS (sin cambios)
+//LOGICA USUARIOS
 function inicializarLogicaUsuarios() {
     const tabla = document.getElementById("tablaUsuarios");
     if (!tabla) return;
@@ -296,7 +317,7 @@ function renderTablaUsuarios(lista, tabla) {
     });
 }
 
-//LOGICA RESERVAS (sin cambios)
+//LOGICA RESERVAS
 function inicializarLogicaReservas() {
     const tabla = document.getElementById("tablaReservas");
     if (!tabla) return;
