@@ -2,6 +2,21 @@ import { inicializarSalones, obtenerSalones, guardarSalones } from './salones-da
 import { inicializarServicios, obtenerServicios, guardarServicios } from './servicios-data.js';
 import { obtenerReservas, guardarListaDeReservas } from './reservas-data.js';
 
+const availableImages = [
+    "Recursos/Salon1.jpg",
+    "Recursos/Salon2.jpg",
+    "Recursos/Salon3.jpg",
+    "Recursos/Salon4.jpg",
+    "Recursos/salon_a.jpg",
+    "Recursos/salon_a.png",
+    "Recursos/salon_b.jpg",
+    "Recursos/salon_b.png",
+    "Recursos/salon_c.jpg",
+    "Recursos/salon_c.png",
+    "Recursos/salon_d.jpg",
+    "Recursos/salon_d.png",
+];
+
 document.addEventListener("DOMContentLoaded", () => {
     const authToken = sessionStorage.getItem("authToken");
     const userRole = sessionStorage.getItem("userRole");
@@ -36,6 +51,55 @@ function inicializarLogicaSalones() {
     const form = document.getElementById("salonForm");
     const tabla = document.getElementById("tablaSalones");
     const buscarInput = document.getElementById("buscarInput");
+
+    const imageSelector = document.getElementById("imageSelector");
+    const addImageBtn = document.getElementById("addImageBtn");
+    const selectedImagesContainer = document.getElementById("selectedImagesContainer");
+    let currentSelectedImages = [];
+
+    if (imageSelector) {
+        availableImages.forEach(img => {
+            const option = document.createElement("option");
+            option.value = img;
+            option.textContent = img.split('/').pop();
+            imageSelector.appendChild(option);
+        });
+    }
+
+    const renderSelectedImages = () => {
+        selectedImagesContainer.innerHTML = "";
+        currentSelectedImages.forEach(imgSrc => {
+            const imgPill = document.createElement('div');
+            imgPill.className = 'badge bg-primary d-flex align-items-center p-2';
+            imgPill.innerHTML = `
+                <img src="${imgSrc}" alt="Miniatura" class="me-2 rounded" style="width: 25px; height: 25px; object-fit: cover;">
+                <span class="text-white">${imgSrc.split('/').pop()}</span>
+                <button type="button" class="btn-close btn-close-white ms-2" data-img-src="${imgSrc}"></button>
+            `;
+            selectedImagesContainer.appendChild(imgPill);
+        });
+    };
+    
+    if (addImageBtn) {
+        addImageBtn.addEventListener("click", () => {
+            const selectedImage = imageSelector.value;
+            if (selectedImage && !currentSelectedImages.includes(selectedImage)) {
+                currentSelectedImages.push(selectedImage);
+                renderSelectedImages();
+            }
+        });
+    }
+
+    if (selectedImagesContainer) {
+        selectedImagesContainer.addEventListener("click", e => {
+            if (e.target.matches('.btn-close')) {
+                const imgSrcToRemove = e.target.dataset.imgSrc;
+                currentSelectedImages = currentSelectedImages.filter(img => img !== imgSrcToRemove);
+                renderSelectedImages();
+            }
+        });
+    }
+
 
     const renderTablaSalones = (lista) => {
         if (!tabla) return;
@@ -78,7 +142,8 @@ function inicializarLogicaSalones() {
                 document.getElementById("estadoSalon").value = salon.estado || 'Disponible';
                 document.getElementById("direccion").value = salon.direccion;
                 document.getElementById("descripcionSalon").value = salon.descripcion;
-                document.getElementById("imagenes").value = salon.imagenes.join(", ");
+                currentSelectedImages = [...salon.imagenes];
+                renderSelectedImages();
             }
         } else if (e.target.classList.contains("eliminar-salon-btn")) {
             const id = parseInt(e.target.getAttribute("data-id"));
@@ -93,6 +158,12 @@ function inicializarLogicaSalones() {
     form.addEventListener("submit", e => {
         e.preventDefault();
         const id = parseInt(document.getElementById("salonId").value);
+        
+        if(currentSelectedImages.length === 0) {
+            alert("Debe seleccionar al menos una imagen para el salón.");
+            return;
+        }
+
         const nuevoSalon = {
             id: id || Date.now(),
             nombre: document.getElementById("nombreSalon").value.trim(),
@@ -100,8 +171,9 @@ function inicializarLogicaSalones() {
             estado: document.getElementById("estadoSalon").value,
             direccion: document.getElementById("direccion").value.trim(),
             descripcion: document.getElementById("descripcionSalon").value.trim(),
-            imagenes: document.getElementById("imagenes").value.split(",").map(url => url.trim())
+            imagenes: currentSelectedImages 
         };
+
         if (id) {
             const index = salones.findIndex(s => s.id === id);
             if (index !== -1) salones[index] = nuevoSalon;
@@ -112,6 +184,8 @@ function inicializarLogicaSalones() {
         actualizarTablaSalones();
         form.reset();
         document.getElementById("salonId").value = "";
+        currentSelectedImages = [];
+        renderSelectedImages();
     });
 
     buscarInput.addEventListener("input", actualizarTablaSalones);
@@ -155,6 +229,7 @@ function inicializarLogicaServicios() {
                 document.getElementById("imagenServicio").value = servicio.imagen;
             }
         } else if (e.target.classList.contains("eliminar-servicio-btn")) {
+             const id = parseInt(e.target.getAttribute("data-id"));
              if (confirm("¿Estas seguro de que queres eliminar este servicio?")) {
                 servicios = servicios.filter(s => s.id !== id);
                 guardarServicios(servicios);
@@ -188,7 +263,8 @@ function inicializarLogicaServicios() {
     renderTablaServicios(servicios);
 }
 
-//LOGICA USUARIOS
+
+//LOGICA USUARIOS (sin cambios)
 function inicializarLogicaUsuarios() {
     const tabla = document.getElementById("tablaUsuarios");
     if (!tabla) return;
@@ -220,7 +296,7 @@ function renderTablaUsuarios(lista, tabla) {
     });
 }
 
-//LOGICA RESERVAS
+//LOGICA RESERVAS (sin cambios)
 function inicializarLogicaReservas() {
     const tabla = document.getElementById("tablaReservas");
     if (!tabla) return;
