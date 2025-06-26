@@ -74,7 +74,6 @@
                     
                     <div class="mb-3 p-3 border rounded">
                         <label class="form-label fw-bold">Gestión de Imágenes</label>
-                        
                         <div class="mb-3">
                             <label for="imageSelector" class="form-label">Opción 1: Seleccionar imagen de la galería local</label>
                             <div class="input-group">
@@ -82,7 +81,6 @@
                                 <button type="button" id="addImageBtn" class="btn btn-outline-primary">Agregar de Galería</button>
                             </div>
                         </div>
-
                         <div class="mb-3">
                             <label for="imageUrlInput" class="form-label">Opción 2: Pegar URL de una imagen externa</label>
                             <div class="input-group">
@@ -90,7 +88,6 @@
                                 <button type="button" id="addImageFromUrlBtn" class="btn btn-outline-secondary">Agregar desde URL</button>
                             </div>
                         </div>
-                        
                         <div>
                             <label class="form-label">Imágenes seleccionadas:</label>
                             <div id="selectedImagesContainer" class="d-flex flex-wrap gap-2 border p-2 rounded" style="min-height: 50px;">
@@ -98,6 +95,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success">Guardar/Agregar Salón</button>
+                </form>
 
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle">
@@ -117,8 +115,7 @@
             </div>
         </div>
 
-        <div class="tab-pane fade" id="servicios-tab-pane" role="tabpanel" aria-labelledby="servicios-tab"
-            tabindex="0">
+        <div class="tab-pane fade" id="servicios-tab-pane" role="tabpanel" aria-labelledby="servicios-tab" tabindex="0">
             <div class="p-3 border border-top-0">
                 <h2 class="h4 mt-3">Editor de Servicios</h2>
                 <form id="servicioForm" class="mb-5">
@@ -143,7 +140,6 @@
                     </div>
                     <button type="submit" class="btn btn-success">Guardar/Agregar Servicio</button>
                 </form>
-
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle">
                         <thead class="table-dark">
@@ -159,7 +155,6 @@
                 </div>
             </div>
         </div>
-
         <div class="tab-pane fade" id="usuarios-tab-pane" role="tabpanel" aria-labelledby="usuarios-tab" tabindex="0">
             <div class="p-3 border border-top-0">
                 <h2 class="h4 mt-3">Listado de Usuarios</h2>
@@ -181,7 +176,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="tab-pane fade" id="reservas-tab-pane" role="tabpanel" aria-labelledby="reservas-tab" tabindex="0">
             <div class="p-3 border border-top-0">
                 <h2 class="h4 mt-3">Listado de Reservas Confirmadas</h2>
@@ -209,5 +203,4 @@
     <script type="module" src="js/admin.js"></script>
 
 </body>
-
 </html>
