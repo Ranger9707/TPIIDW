@@ -25,7 +25,8 @@ export const serviciosIniciales = [
 ];
 
 export function inicializarServicios() {
-    if (!localStorage.getItem(SERVICIOS_KEY)) {
+    const serviciosGuardados = JSON.parse(localStorage.getItem(SERVICIOS_KEY));
+    if (!serviciosGuardados || serviciosGuardados.length === 0) {
         localStorage.setItem(SERVICIOS_KEY, JSON.stringify(serviciosIniciales));
     }
 }

@@ -60,7 +60,8 @@ export const salonesIniciales = [
 ];
 
 export function inicializarSalones() {
-    if (!localStorage.getItem(SALONES_KEY)) {
+    const salonesGuardados = JSON.parse(localStorage.getItem(SALONES_KEY));
+    if (!salonesGuardados || salonesGuardados.length === 0) {
         localStorage.setItem(SALONES_KEY, JSON.stringify(salonesIniciales));
     }
 }
